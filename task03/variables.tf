@@ -56,4 +56,4 @@ variable "sa_name" {
 #  type        = string
 #  default = "Standard_LRS"
 #  description = "Storage account type for os_disk"
-#}
+# }
