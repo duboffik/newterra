@@ -6,10 +6,6 @@ output "rg_name" {
   value = azurerm_resource_group.my_RG.name
 }
 
-output "sa_name" {
-  value = azurerm_storage_account.my_SA.name
-}
-
 output "VNET_name" {
   value = azurerm_virtual_network.my_VNET.name
 }
@@ -18,19 +14,20 @@ output "VNET_address" {
   value = azurerm_virtual_network.my_VNET.address_space
 }
 
-output "SNET1_name" {
-  value = azurerm_subnet.my_SNET1.name
+output "SNET_name" {
+  value = azurerm_subnet.my_SNET.name
 }
 
-output "SNET1_address" {
-  value = azurerm_subnet.my_SNET1.address_prefixes
+output "SNET_address" {
+  value = azurerm_subnet.my_SNET.address_prefixes
 }
 
-output "SNET2_name" {
-  value = azurerm_subnet.my_SNET2.name
+output "PublicIP_address" {
+  value = azurerm_linux_virtual_machine.my_vm.public_ip_address
 }
 
-output "SNET2_address" {
-  value = azurerm_subnet.my_SNET2.address_prefixes
+output "PublicIP_dns" {
+  value = azurerm_public_ip.my_public_ip.fqdn
 }
+
 
