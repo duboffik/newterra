@@ -19,48 +19,41 @@ provider "azurerm" {
 }
 
 # Create Resource group
-resource "azurerm_resource_group" "myRG" {
+resource "azurerm_resource_group" "my_RG" {
   name     = "${var.rg_name}"
   location = "${var.rg_location}"
 }
 
 # Create vNet
-resource "azurerm_virtual_network" "myVNET" {
+resource "azurerm_virtual_network" "my_VNET" {
   name                = "${var.vnet_name}"
-  resource_group_name = azurerm_resource_group.module4_rg.name
-  location            = azurerm_resource_group.module4_rg.location
+  resource_group_name = azurerm_resource_group.my_RG.name
+  location            = azurerm_resource_group.my_RG.location
   address_space       = ["${var.vnet_address}"]
 }
 
 # Create Subnet
-resource "azurerm_subnet" "mySNET_snet1" {
+resource "azurerm_subnet" "my_SNET1" {
   name                 = "${var.snet_name1}"
-  virtual_network_name = azurerm_virtual_network.module4_vnet.name
-  resource_group_name  = azurerm_resource_group.module4_rg.name
-  address_prefixes     = ["${var.snet_prefixes1}"]
+  virtual_network_name = azurerm_virtual_network.my_VNET.name
+  resource_group_name = azurerm_resource_group.my_RG.name
+  address_prefixes     = ["${var.snet1_prefixes}"]
 }
 
 # Create Subnet
-resource "azurerm_subnet" "mySNET_snet2" {
+resource "azurerm_subnet" "my_SNET2" {
   name                 = "${var.snet_name2}"
-  virtual_network_name = azurerm_virtual_network.module4_vnet.name
-  resource_group_name  = azurerm_resource_group.module4_rg.name
-  address_prefixes     = ["${var.snet_prefixes2}"]
+  virtual_network_name = azurerm_virtual_network.my_VNET.name
+  resource_group_name = azurerm_resource_group.my_RG.name
+  address_prefixes     = ["${var.snet2_prefixes}"]
 }
 
-resource "azurerm_storage_account" "my_sa" {
+# Create Storage account
+resource "azurerm_storage_account" "my_SA" {
   name                     = "${var.sa_name}"
-  resource_group_name      = azurerm_resource_group.myRG.name
-  location                 = azurerm_resource_group.myRG.location
+  resource_group_name = azurerm_resource_group.my_RG.name
+  location            = azurerm_resource_group.my_RG.location
   account_kind             = "BlockBlobStorage"
   account_tier             = "Premium"
-
-# Create Public IP
-#resource "azurerm_public_ip" "module4_public_ip" {
-#  name                = "${var.prefix}_myPublicIP"
-#  resource_group_name = azurerm_resource_group.module4_rg.name
-#  location            = azurerm_resource_group.module4_rg.location
-#  allocation_method   = "Dynamic"
-#  domain_name_label = "${var.domain_name_label}"
-#}
-
+  account_replication_type = "LRS"
+}
