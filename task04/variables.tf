@@ -107,4 +107,16 @@ variable "my_configuration_name" {
   description = "Name of NIC's configuration"
 }
 
+variable "secrule_name1" {
+  type        = string
+  default     = "HTTP"
+  description = "Name of security rule number 1"
+}
+
+variable "secrule_name2" {
+  type        = string
+  default     = "cmtr-22"
+  description = "Name of security rule number 2"
+}
+
 
