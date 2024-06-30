@@ -119,4 +119,10 @@ variable "secrule_name2" {
   description = "Name of security rule number 2"
 }
 
+variable "ext_name" {
+  type        = string
+  default     = "my_ext"
+  description = "Name of VM extensions"
+}
+
 
