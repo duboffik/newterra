@@ -137,16 +137,3 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
     }
   }
 }
-
-#resource "azurerm_virtual_machine_extension" "my_extension" {
-#  name                 = "${var.ext_name}"
-#  virtual_machine_id   = azurerm_linux_virtual_machine.my_vm.id
-#  publisher            = "Microsoft.Azure.Extensions"
-#  type                 = "CustomScript"
-#  type_handler_version = "2.0"
-#  settings = <<SETTINGS
-# {
-#  "commandToExecute": "bash -c 'date'"
-# }
-#SETTINGS
-#}
