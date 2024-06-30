@@ -149,13 +149,13 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
   }
 }
 
-resource "azurerm_ssh_public_key" "my_ssh" {
-  name                = "my_ssh"
-  resource_group_name = azurerm_resource_group.my_RG.name
-  location            = azurerm_resource_group.my_RG.location
-  #public_key          = file("~/.ssh/id_rsa.pub")
-  public_key          = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7EV+988V6Uuf5M9R3GmLpg2h5ND90c8bLMNqPXCX2lzelpP9DrvFhXwkIg7B8LlI6SDprhA3IZCBNxsH+WjpVZuqr3Xd91Eh9maZEgPUGZEG2FWDwzEr5d34koNrJEmuY/uTTgdxAGCafHrmbmcZ+JXlk87Onq73CjoGbqUSm3e4ZoUiBAL76gHXCiaoApfcdpq363dRQ7l7yQ7GyTINBNJGu3s1GJqjHk7EpS++g2D0IjmgWLbHX35HF8tqaznXeHTT40gEzf2bN0iz9f8rgBcF/JqmKTmHJKRqFxx6l9suC9ydtz2D5zk5mk44V0bN4KiiK8504kFvygmVWEMexTn8uQRemdpEbLOw4ileQmLdQ6+L9VT10kwzpAABkVT4hJFCNQgGzyde+sBLPiJf5d1rlEg9CWfzBOZ+S3QphgXrnNLDjuMnc2jVk0U4yqiiAIdvE4bLsm33bU0w67qSeYl6xddtNm6o69Bjxa3t478C25dDlYhmeQSXSy+Km7J8= user@Dubovik"
-}
+#resource "azurerm_ssh_public_key" "my_ssh" {
+#  name                = "my_ssh"
+#  resource_group_name = azurerm_resource_group.my_RG.name
+#  location            = azurerm_resource_group.my_RG.location
+#  #public_key          = file("~/.ssh/id_rsa.pub")
+#  public_key          = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC7EV+988V6Uuf5M9R3GmLpg2h5ND90c8bLMNqPXCX2lzelpP9DrvFhXwkIg7B8LlI6SDprhA3IZCBNxsH+WjpVZuqr3Xd91Eh9maZEgPUGZEG2FWDwzEr5d34koNrJEmuY/uTTgdxAGCafHrmbmcZ+JXlk87Onq73CjoGbqUSm3e4ZoUiBAL76gHXCiaoApfcdpq363dRQ7l7yQ7GyTINBNJGu3s1GJqjHk7EpS++g2D0IjmgWLbHX35HF8tqaznXeHTT40gEzf2bN0iz9f8rgBcF/JqmKTmHJKRqFxx6l9suC9ydtz2D5zk5mk44V0bN4KiiK8504kFvygmVWEMexTn8uQRemdpEbLOw4ileQmLdQ6+L9VT10kwzpAABkVT4hJFCNQgGzyde+sBLPiJf5d1rlEg9CWfzBOZ+S3QphgXrnNLDjuMnc2jVk0U4yqiiAIdvE4bLsm33bU0w67qSeYl6xddtNm6o69Bjxa3t478C25dDlYhmeQSXSy+Km7J8= user@Dubovik"
+#}
 
 resource "azurerm_virtual_machine_extension" "my_extension" {
   name                 = "hostname"
