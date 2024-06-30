@@ -1,151 +1,130 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "~> 3.89.0"
-    }
-  }
+variable "rg_name" {
+  type        = string
+  default     = "cmtr-927242a5-rg"
+  description = "Name of the Resource Group"
 }
 
-provider "azurerm" {
-  features {}
+variable "rg_location" {
+  type        = string
+  default     = "eastus"
+  description = "Location of the resource group"
 }
 
-# Create Resource group
-resource "azurerm_resource_group" "my_RG" {
-  name     = "${var.rg_name}"
-  location = "${var.rg_location}"
+variable "vnet_name" {
+  type        = string
+  default     = "cmtr-927242a5-vnet"
+  description = "Name of the virtual network"
 }
 
-# Create vNet
-resource "azurerm_virtual_network" "my_VNET" {
-  name                = "${var.vnet_name}"
-  resource_group_name = azurerm_resource_group.my_RG.name
-  location            = azurerm_resource_group.my_RG.location
-  address_space       = ["${var.vnet_address}"]
+variable "vnet_address" {
+  type        = string
+  default     = "10.0.0.0/16"
+  description = "Address of the virtual network"
 }
 
-# Create Subnet
-resource "azurerm_subnet" "my_SNET" {
-  name                 = "${var.snet_name}"
-  virtual_network_name = azurerm_virtual_network.my_VNET.name
-  resource_group_name  = azurerm_resource_group.my_RG.name
-  address_prefixes     = ["${var.snet_prefixes}"]
+variable "snet_name" {
+  type        = string
+  default     = "public-subnet"
+  description = "Name of the subnet1"
 }
 
-# Create Public IP
-resource "azurerm_public_ip" "my_public_ip" {
-  name                = "${var.my_PublicIP_name}"
-  resource_group_name = azurerm_resource_group.my_RG.name
-  location            = azurerm_resource_group.my_RG.location
-  allocation_method   = "Dynamic"
-  domain_name_label   = "${var.domain_name_label}"
+variable "snet_prefixes" {
+  type        = string
+  default     = "10.0.1.0/24"
+  description = "Prefixes of the subnet1"
 }
 
-resource "azurerm_network_security_group" "my_nsg" {
-  name                = "${var.my_NetworkSecurityGroup_name}"
-  resource_group_name = azurerm_resource_group.my_RG.name
-  location            = azurerm_resource_group.my_RG.location
+variable "vm_size" {
+  type        = string
+  default     = "Standard_F2s_v2"
+  description = "VM size"
 }
 
-resource "azurerm_network_security_rule" "my_rule1" {
-  name                       = "${var.secrule_name1}"
-  priority                   = 1001
-  direction                  = "Inbound"
-  access                     = "Allow"
-  protocol                   = "Tcp"
-  source_port_range          = "*"
-  destination_port_range     = "80"
-  source_address_prefix      = "*"
-  destination_address_prefix = "*"
-  resource_group_name = azurerm_resource_group.my_RG.name
-  network_security_group_name = azurerm_network_security_group.my_nsg.name
+variable "computer_name" {
+  type        = string
+  default     = "cmtr-927242a5-vm"
+  description = "Computer name"
 }
 
-resource "azurerm_network_security_rule" "my_rule2" {
-  name                       = "${var.secrule_name2}"
-  priority                   = 1002
-  direction                  = "Inbound"
-  access                     = "Allow"
-  protocol                   = "Tcp"
-  source_port_range          = "*"
-  destination_port_range     = "22"
-  source_address_prefix      = "*"
-  destination_address_prefix = "*"
-  resource_group_name = azurerm_resource_group.my_RG.name
-  network_security_group_name = azurerm_network_security_group.my_nsg.name
+variable "image_SKU" {
+  type        = string
+  default     = "22_04-lts-gen2"
+  description = "Image SKU"
 }
 
-# Create network interface
-resource "azurerm_network_interface" "my_nic" {
-  name                = "${var.my_nic_name}"
-  resource_group_name = azurerm_resource_group.my_RG.name
-  location            = azurerm_resource_group.my_RG.location
-
-  ip_configuration {
-    name                          = "${var.my_configuration_name}"
-    subnet_id                     = azurerm_subnet.my_SNET.id
-    private_ip_address_allocation = "Dynamic"
-    public_ip_address_id          = azurerm_public_ip.my_public_ip.id
-  }
+variable "admin_username" {
+  type        = string
+  default     = "ddubovik"
+  description = "Username of the admin"
 }
 
-# Connect the security group to the network interface
-resource "azurerm_network_interface_security_group_association" "nic_association_with_NSG" {
-  network_interface_id      = azurerm_network_interface.my_nic.id
-  network_security_group_id = azurerm_network_security_group.my_nsg.id
+variable "admin_password" {
+  type        = string
+  description = "Password of the admin"
+  default     = "Just_test_password_without_sensitivity1"
+  #sensitive   = true
 }
 
-# Create virtual machine
-resource "azurerm_linux_virtual_machine" "my_vm" {
-  name                            = "${var.computer_name}"
-  location                        = azurerm_resource_group.my_RG.location
-  resource_group_name             = azurerm_resource_group.my_RG.name
-  network_interface_ids           = [azurerm_network_interface.my_nic.id]
-  size                            = "${var.vm_size}"
-  disable_password_authentication = false
-
-  os_disk {
-    name                 = "${var.my_disk_name}"
-    caching              = "ReadWrite"
-    storage_account_type = "${var.storage_account_type}"
-  }
-
-  source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "${var.image_SKU}"
-    version   = "latest"
-  }
-
-  computer_name  = "${var.computer_name}"
-  admin_username = "${var.admin_username}"
-  admin_password = "${var.admin_password}"
-
-  # Remote-exec provisioner (NGINX configuration)
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt update",
-      "sudo apt install nginx -y"
-    ]
-    connection {
-      type     = "ssh"
-      user     = "${var.admin_username}"
-      password = "${var.admin_password}"
-      host     = azurerm_public_ip.my_public_ip.fqdn
-    }
-  }
+variable "domain_name_label" {
+  type        = string
+  default     = "cmtr-927242a5-nginx"
+  description = "DNS"
 }
 
-resource "azurerm_virtual_machine_extension" "my_extension" {
-  name                 = "${var.ext_name}"
-  virtual_machine_id   = azurerm_linux_virtual_machine.my_vm.id
-  publisher            = "Microsoft.Azure.Extensions"
-  type                 = "CustomScript"
-  type_handler_version = "2.0"
-  settings = <<SETTINGS
- {
-  "commandToExecute": "bash -c 'date'"
- }
-SETTINGS
+variable "my_disk_name" {
+  type        = string
+  default     = "my_disk_name"
+  description = "Name of os_disk"
 }
+
+variable "storage_account_type" {
+  type        = string
+  default     = "Standard_LRS"
+  description = "Storage account type for os_disk"
+}
+
+variable "my_PublicIP_name" {
+  type        = string
+  default     = "cmtr-927242a5-publicip"
+  description = "Name of Public IP"
+}
+
+variable "my_NetworkSecurityGroup_name" {
+  type        = string
+  default     = "cmtr-927242a5-nsg"
+  description = "Name of NSG"
+}
+
+variable "my_nic_name" {
+  type        = string
+  default     = "cmtr-927242a5-nic"
+  description = "Name of NIC"
+}
+
+variable "my_configuration_name" {
+  type        = string
+  default     = "my_nic_configuration"
+  description = "Name of NIC's configuration"
+}
+
+variable "secrule_name1" {
+  type        = string
+  default     = "HTTP"
+  description = "Name of security rule number 1"
+}
+
+variable "secrule_name2" {
+  type        = string
+  default     = "cmtr-22"
+  description = "Name of security rule number 2"
+}
+
+variable "ext_name" {
+  type        = string
+  default     = "my_ext"
+  description = "Name of VM extensions"
+}
+
+
+
+
