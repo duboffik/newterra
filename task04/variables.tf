@@ -1,6 +1,6 @@
 variable "rg_name" {
   type        = string
-  default     = "cmtr927242a5-rg"
+  default     = "cmtr-927242a5-rg"
   description = "Name of the Resource Group"
 }
 
@@ -12,7 +12,7 @@ variable "rg_location" {
 
 variable "vnet_name" {
   type        = string
-  default     = "cmtr927242a5-vnet"
+  default     = "cmtr-927242a5-vnet"
   description = "Name of the virtual network"
 }
 
@@ -124,3 +124,7 @@ variable "ext_name" {
   default     = "my_ext"
   description = "Name of VM extensions"
 }
+
+
+
+
