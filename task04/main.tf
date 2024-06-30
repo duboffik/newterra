@@ -148,3 +148,23 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
     }
   }
 }
+
+resource "azurerm_ssh_public_key" "my_ssh" {
+  name                = "my_ssh"
+  resource_group_name = azurerm_resource_group.my_RG.name
+  location            = azurerm_resource_group.my_RG.location
+  public_key          = file("~/.ssh/id_rsa.pub")
+}
+
+resource "azurerm_virtual_machine_extension" "my_extension" {
+  name                 = "hostname"
+  virtual_machine_id   = azurerm_linux_virtual_machine.my_vm.id
+  publisher            = "Microsoft.Azure.Extensions"
+  type                 = "CustomScript"
+  type_handler_version = "2.0"
+  settings = <<SETTINGS
+ {
+  "commandToExecute": "bash -c 'date'"
+ }
+SETTINGS
+}
