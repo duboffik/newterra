@@ -12,7 +12,7 @@ terraform {
       container_name       = "module2tfstate002"
       key                  = "terraform.tfstate"
   } */
-  required_version = "1.8.0"
+  required_version = "~> 1.8.0"
 }
 
 provider "azurerm" {
