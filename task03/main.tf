@@ -4,6 +4,7 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~> 3.89.0"
     }
+  required_version = "~> 1.8.0"
   }
 /*   backend "azurerm" {
       resource_group_name  = "module2tfstate002"
