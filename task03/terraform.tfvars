@@ -1,1 +1,5 @@
-
+rg_name       = "cmtr927242a5-rg"
+vnet_name     = "cmtr927242a5-vnet"
+snet_name1    = "cmtr927242a5-private"
+snet_name2    = "cmtr927242a5-public"
+sa_name       = "cmtr927242a5sa"
