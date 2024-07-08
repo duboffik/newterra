@@ -1,6 +1,5 @@
 variable "rg_name" {
   type        = string
-  default     = "cmtr927242a5-rg"
   description = "Name of the Resource Group"
 }
 
@@ -12,7 +11,6 @@ variable "rg_location" {
 
 variable "vnet_name" {
   type        = string
-  default     = "cmtr927242a5-vnet"
   description = "Name of the virtual network"
 }
 
@@ -24,7 +22,6 @@ variable "vnet_address" {
 
 variable "snet_name1" {
   type        = string
-  default     = "cmtr927242a5-private"
   description = "Name of the subnet1"
 }
 
@@ -36,7 +33,6 @@ variable "snet1_prefixes" {
 
 variable "snet_name2" {
   type        = string
-  default     = "cmtr927242a5-public"
   description = "Name of the subnet2"
 }
 
@@ -48,7 +44,6 @@ variable "snet2_prefixes" {
 
 variable "sa_name" {
   type        = string
-  default     = "cmtr927242a5sa"
   description = "Name of storage account"
 }
 
