@@ -24,7 +24,7 @@ variable "vnet_address" {
 
 variable "snet_name1" {
   type        = string
-  default     = "private"
+  default     = "cmtr927242a5-private"
   description = "Name of the subnet1"
 }
 
@@ -36,7 +36,7 @@ variable "snet1_prefixes" {
 
 variable "snet_name2" {
   type        = string
-  default     = "public"
+  default     = "cmtr927242a5-public"
   description = "Name of the subnet2"
 }
 
