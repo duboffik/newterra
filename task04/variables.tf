@@ -1,3 +1,4 @@
+#my_variables
 variable "rg_name" {
   type        = string
   default     = "cmtr-927242a5-rg"
