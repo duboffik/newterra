@@ -33,6 +33,7 @@ variable "snet1_prefixes" {
 
 variable "snet_name2" {
   type        = string
+  description = "Name of the subnet2"
 }
 
 variable "snet2_prefixes" {
