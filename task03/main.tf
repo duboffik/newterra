@@ -6,6 +6,9 @@ provider "azurerm" {
 resource "azurerm_resource_group" "my_RG" {
   name     = var.rg_name
   location = var.rg_location
+  tags = {
+    Creator = "student_email"
+  }
 }
 
 # Create vNet
@@ -14,6 +17,9 @@ resource "azurerm_virtual_network" "my_VNET" {
   resource_group_name = azurerm_resource_group.my_RG.name
   location            = azurerm_resource_group.my_RG.location
   address_space       = ["${var.vnet_address}"]
+  tags = {
+    Creator = "student_email"
+  }
 }
 
 # Create Subnet
@@ -40,4 +46,7 @@ resource "azurerm_storage_account" "my_SA" {
   account_kind             = "BlockBlobStorage"
   account_tier             = "Premium"
   account_replication_type = "LRS"
+  tags = {
+    Creator = "student_email"
+  }
 }
