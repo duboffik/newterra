@@ -1,4 +1,4 @@
-output "rg_ID" {
+output "rg_id" {
   description = "test_description_1"
   value       = azurerm_resource_group.my_RG.id
 }
@@ -8,7 +8,7 @@ output "sa_blob_endpoint" {
   value       = azurerm_storage_account.my_SA.primary_blob_endpoint
 }
 
-output "VNET_ID" {
+output "vnet_id" {
   description = "test_description_3"
   value       = azurerm_virtual_network.my_VNET.id
 }
