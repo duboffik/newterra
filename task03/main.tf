@@ -6,9 +6,9 @@ provider "azurerm" {
 resource "azurerm_resource_group" "my_RG" {
   name     = var.rg_name
   location = var.rg_location
-#  tags = {
-#    Creator = "dzmitry_dubovik@epam.com"
-#  }
+  #  tags = {
+  #    Creator = "dzmitry_dubovik@epam.com"
+  #  }
 }
 
 # Create vNet
