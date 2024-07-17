@@ -1,16 +1,16 @@
 output "rg_id" {
-  description = "test_description_1"
+  description = "rg_id"
   value       = azurerm_storage_account.my_SA.primary_blob_endpoint
 #  value       = azurerm_resource_group.my_RG.id
 }
 
 output "sa_blob_endpoint" {
-  description = "test_description_2"
+  description = "sa_blob_endpoint"
   value       = azurerm_storage_account.my_SA.primary_blob_endpoint
 }
 
 output "vnet_id" {
-  description = "test_description_3"
+  description = "VNET_id"
 #  value       = azurerm_virtual_network.my_VNET.id
   value       = azurerm_resource_group.my_RG.id
 }
