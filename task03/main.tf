@@ -1,9 +1,18 @@
 provider "azurerm" {
   features {}
 }
-
+backend
 # Create Resource group
 resource "azurerm_resource_group" "my_RG" {
+  name     = var.rg_name
+  location = var.rg_location
+  tags = {
+    Creator = "student_email"
+  }
+}
+
+# Create Resource group
+resource "azurerm_resource_group" "my_RG2" {
   name     = var.rg_name
   location = var.rg_location
   tags = {
