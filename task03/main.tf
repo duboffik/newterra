@@ -1,8 +1,7 @@
 provider "azurerm" {
   features {}
 }
-backend
-  backend
+
 # Create Resource group
 resource "azurerm_resource_group" "my_RG" {
   name     = var.rg_name
