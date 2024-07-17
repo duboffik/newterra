@@ -1,13 +1,6 @@
 provider "azurerm" {
   features {}
 }
-#backend
-resource "terraform_data" "example2" {
-  provisioner "local-exec" {
-    command     = "Get-Date > completed.txt"
-    interpreter = ["PowerShell", "-Command"]
-  }
-}
 
 # Create Resource group
 resource "azurerm_resource_group" "my_RG" {
