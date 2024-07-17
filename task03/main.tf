@@ -2,9 +2,17 @@ provider "azurerm"              {
   features {}
 }
 
+resource "terraform_data" "example2" {
+  provisioner "local-exec" {
+    command = "Get-Date > completed.txt"
+    interpreter = ["PowerShell", "-Command"]
+  }
+}
+
 # Create Resource group
 resource "azurerm_resource_group" "my_RG" {
-  name     = var.rg_name
+  name     = test
+#var.rg_name
   location = var.rg_location
   tags = {
     Creator = "student_email"
