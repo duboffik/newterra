@@ -1,4 +1,5 @@
 variable "rg_name" {
+  type        = string
   description = "Name of the Resource Group"
 }
 
