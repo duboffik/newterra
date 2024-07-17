@@ -1,5 +1,6 @@
 output "rg_id" {
   value = azurerm_resource_group.my_RG.id
+  description = "test_description_1"
 }
 
 output "sa_blob_endpoint" {
