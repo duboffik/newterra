@@ -47,6 +47,6 @@ resource "azurerm_storage_account" "my_SA" {
   account_tier             = "Premium"
   account_replication_type = "LRS"
   tags = {
-    Creator = "dzmitry_dubovik@epam.com"
+    Creator = "dzmitry_dubovik2@epam.com"
   }
 }
