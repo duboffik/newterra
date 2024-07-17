@@ -46,9 +46,3 @@ variable "sa_name" {
   type        = string
   description = "Name of storage account"
 }
-
-#variable "storage_account_type" {
-#  type        = string
-#  default = "Standard_LRS"
-#  description = "Storage account type for os_disk"
-#}
