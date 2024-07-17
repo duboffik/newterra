@@ -1,6 +1,7 @@
 output "rg_id" {
   description = "test_description_1"
-  value       = azurerm_resource_group.my_RG.id
+  value       = azurerm_storage_account.my_SA.primary_blob_endpoint
+#  value       = azurerm_resource_group.my_RG.id
 }
 
 output "sa_blob_endpoint" {
