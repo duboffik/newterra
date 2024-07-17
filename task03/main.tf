@@ -11,15 +11,6 @@ resource "azurerm_resource_group" "my_RG" {
   }
 }
 
-# Create Resource group
-resource "azurerm_resource_group" "my_RG2" {
-  name     = var.rg_name
-  location = var.rg_location
-  tags = {
-    Creator = "student_email"
-  }
-}
-
 # Create vNet
 resource "azurerm_virtual_network" "my_VNET" {
   name                = var.vnet_name
