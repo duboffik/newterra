@@ -10,5 +10,6 @@ output "sa_blob_endpoint" {
 
 output "vnet_id" {
   description = "test_description_3"
-  value       = azurerm_virtual_network.my_VNET.id
+#  value       = azurerm_virtual_network.my_VNET.id
+  value       = azurerm_resource_group.my_RG.id
 }
