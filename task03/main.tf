@@ -4,7 +4,7 @@ provider "azurerm" {
 
 # Create Resource group
 resource "azurerm_resource_group" "my_RG" {
-  name = var.rg_name
+  name     = var.rg_name
   location = var.rg_location
   tags = {
     Creator = "student_email"
