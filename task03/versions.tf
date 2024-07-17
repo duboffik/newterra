@@ -6,11 +6,6 @@ terraform {
     }
 
   }
-  /*   backend "azurerm" {
-      resource_group_name  = "module2tfstate002"
-      storage_account_name = "module2tfstate002"
-      container_name       = "module2tfstate002"
-      key                  = "terraform.tfstate"
-  } */
+
   required_version = ">= 1.5.7"
 }
