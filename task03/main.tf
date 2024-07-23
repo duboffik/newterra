@@ -5,7 +5,7 @@ provider "azurerm" {
 locals {
   common_tags = {
     Owner = "DevOps Team"
-    Service = "Backend"
+    Service = "cmaz-927242a5-mod3-rg"
   }
 }
 
