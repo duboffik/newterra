@@ -2,9 +2,16 @@ provider "azurerm" {
   features {}
 }
 
+locals {
+  common_tags = {
+    Owner = "DevOps Team"
+    Service = "Backend"
+  }
+}
+
 # Create Resource group
 resource "azurerm_resource_group" "my_RG" {
-  name     = var.rg_name
+  name     = local.common_tags.Service
   location = var.rg_location
   tags = {
     Creator = "dzmitry_dubovik@epam.com"
