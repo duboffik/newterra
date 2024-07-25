@@ -1,13 +1,11 @@
-rg_name                          = "cmaz-12345678-mod3-rg"
-location                         = "North Europe"
-storage_account_name             = "cmaz12345678mod3sa"
-storage_account_replication_type = "LRS"
-vnet_name                        = "cmaz-12345678-mod3-vnet"
-vnet_address_space               = ["10.0.0.0/16"]
-public_snet_name                 = "frontend"
-public_snet_address_prefixes     = ["10.0.1.0/24"]
-private_snet_name                = "backend"
-private_snet_address_prefixes    = ["10.0.2.0/24"]
-tags = {
-  Creator = "name_surname@epam.com"
-}
+rg_name           = "cmtr-927242a5-rg"
+vnet_name         = "cmtr-927242a5-vnet"
+subnet_name       = "public-subnet"
+nic_name          = "cmtr-927242a5-nic"
+nsg_name          = "cmtr-927242a5-nsg"
+nsg_rule_http     = "cmtr-80"
+nsg_rule_ssh      = "cmtr-22"
+public_ip         = "cmtr-927242a5-publicip"
+vm_name           = "cmtr-927242a5-vm"
+location          = "eastus"
+domain_name_label = "cmtr-927242a5-nginx"
