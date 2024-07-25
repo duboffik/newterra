@@ -41,7 +41,7 @@ variable "vm_size" {
   description = "VM size"
 }
 
-variable "computer_name" {
+variable "vm_name" {
   type        = string
   default     = "cmtr-927242a5-vm"
   description = "Computer name"
