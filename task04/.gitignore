@@ -6,3 +6,4 @@
 terraform.rc
 *.plan
 .terraform*
+.terraform.lock.hcl
