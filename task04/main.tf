@@ -89,7 +89,7 @@ resource "azurerm_network_interface_security_group_association" "nic_association
 
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "my_vm" {
-  name                            = var.computer_name
+  name                            = var.vm_name
   location                        = azurerm_resource_group.my_RG.location
   resource_group_name             = azurerm_resource_group.my_RG.name
   network_interface_ids           = [azurerm_network_interface.my_nic.id]
@@ -109,7 +109,7 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
     version   = "latest"
   }
 
-  computer_name  = var.computer_name
+  computer_name  = var.vm_name
   admin_username = var.admin_username
   admin_password = var.admin_password
 
