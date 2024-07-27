@@ -21,7 +21,7 @@ resource "azurerm_subnet" "my_SNET" {
   name                 = var.snet_name
   virtual_network_name = azurerm_virtual_network.my_VNET.name
   resource_group_name  = azurerm_resource_group.my_RG.name
-  address_prefixes     = ["${var.snet_prefixes}"]
+  address_prefixes     = ["${var.subnet_prefixes}"]
 }
 
 # Create Public IP
@@ -34,13 +34,13 @@ resource "azurerm_public_ip" "my_public_ip" {
 }
 
 resource "azurerm_network_security_group" "my_nsg" {
-  name                = var.my_NetworkSecurityGroup_name
+  name                = var.nsg_name
   resource_group_name = azurerm_resource_group.my_RG.name
   location            = azurerm_resource_group.my_RG.location
 }
 
 resource "azurerm_network_security_rule" "my_rule1" {
-  name                        = var.secrule_name1
+  name                        = var.nsg_rule_http
   priority                    = 1001
   direction                   = "Inbound"
   access                      = "Allow"
@@ -54,7 +54,7 @@ resource "azurerm_network_security_rule" "my_rule1" {
 }
 
 resource "azurerm_network_security_rule" "my_rule2" {
-  name                        = var.secrule_name2
+  name                        = var.nsg_rule_ssh
   priority                    = 1002
   direction                   = "Inbound"
   access                      = "Allow"
@@ -69,12 +69,12 @@ resource "azurerm_network_security_rule" "my_rule2" {
 
 # Create network interface
 resource "azurerm_network_interface" "my_nic" {
-  name                = var.my_nic_name
+  name                = var.nic_name
   resource_group_name = azurerm_resource_group.my_RG.name
   location            = azurerm_resource_group.my_RG.location
 
   ip_configuration {
-    name                          = var.my_configuration_name
+    name                          = var.my_conf_name
     subnet_id                     = azurerm_subnet.my_SNET.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.my_public_ip.id
@@ -110,8 +110,8 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
   }
 
   computer_name  = var.vm_name
-  admin_username = var.admin_username
-  admin_password = var.admin_password
+  admin_username = var.linux_admin
+  admin_password = var.linux_password
 
   # Remote-exec provisioner (NGINX configuration)
   provisioner "remote-exec" {
