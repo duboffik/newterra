@@ -60,7 +60,7 @@ variable "my_disk_name" {
   description = "Name of os_disk"
 }
 
-variable "storage_account_type" {
+variable "sa_type" {
   type        = string
   description = "Storage account type for os_disk"
 }
@@ -80,7 +80,7 @@ variable "nic_name" {
   description = "Name of NIC"
 }
 
-variable "my_configuration_name" {
+variable "my_conf_name" {
   type        = string
   description = "Name of NIC's configuration"
 }
