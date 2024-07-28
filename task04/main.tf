@@ -18,7 +18,7 @@ resource "azurerm_virtual_network" "my_VNET" {
 
 # Create Subnet
 resource "azurerm_subnet" "my_SNET" {
-  name                 = var.snet_name
+  name                 = var.subnet_name
   virtual_network_name = azurerm_virtual_network.my_VNET.name
   resource_group_name  = azurerm_resource_group.my_RG.name
   address_prefixes     = ["${var.subnet_prefixes}"]
@@ -26,7 +26,7 @@ resource "azurerm_subnet" "my_SNET" {
 
 # Create Public IP
 resource "azurerm_public_ip" "my_public_ip" {
-  name                = var.my_PublicIP_name
+  name                = var.public_ip
   resource_group_name = azurerm_resource_group.my_RG.name
   location            = azurerm_resource_group.my_RG.location
   allocation_method   = "Dynamic"
