@@ -49,6 +49,11 @@ variable "linux_admin" {
   description = "Username of the admin"
 }
 
+variable "linux_password" {
+  type        = string
+  description = "Password of the admin"
+}
+
 variable "domain_name_label" {
   type        = string
   default     = "cmtr-927242a5-nginx"
