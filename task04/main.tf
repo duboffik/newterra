@@ -99,7 +99,7 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
   os_disk {
     name                 = var.my_disk_name
     caching              = "ReadWrite"
-    storage_account_type = var.storage_account_type
+    storage_account_type = var.sa_type
   }
 
   source_image_reference {
@@ -121,8 +121,8 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
     ]
     connection {
       type     = "ssh"
-      user     = var.admin_username
-      password = var.admin_password
+      user     = var.linux_username
+      password = var.linux_password
       host     = azurerm_public_ip.my_public_ip.fqdn
     }
   }
