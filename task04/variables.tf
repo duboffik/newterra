@@ -44,7 +44,7 @@ variable "image_SKU" {
   description = "Image SKU"
 }
 
-variable "linux_admin" {
+variable "linux_username" {
   type        = string
   description = "Username of the admin"
 }

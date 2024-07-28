@@ -110,7 +110,7 @@ resource "azurerm_linux_virtual_machine" "my_vm" {
   }
 
   computer_name  = var.vm_name
-  admin_username = var.linux_admin
+  admin_username = var.linux_username
   admin_password = var.linux_password
 
   # Remote-exec provisioner (NGINX configuration)
