@@ -1,12 +1,12 @@
 #my_variables
 variable "rg_name" {
   type        = string
-  description = "Name of the Resource Group"
+  description = "The Name which should be used for this Resource Group"
 }
 
 variable "rg_location" {
   type        = string
-  description = "Location of the resource group"
+  description = "The Azure Region where the Resource Group and Resources should exist"
 }
 
 variable "vnet_name" {
@@ -16,27 +16,71 @@ variable "vnet_name" {
 
 variable "vnet_address" {
   type        = string
-  description = "Address of the virtual network"
+  description = "The address space that is used the virtual network"
 }
 
 variable "subnet_name" {
   type        = string
-  description = "Name of the subnet1"
+  description = "The name of the subnet"
 }
 
 variable "subnet_prefixes" {
   type        = string
-  description = "Prefixes of the subnet1"
+  description = "The address prefixes to use for the private subnet"
 }
 
+variable "public_ip" {
+  type        = string
+  description = "Name of the Public IP"
+}
+
+variable "domain_name_label" {
+  type        = string
+  description = "Domain name label"
+}
+
+variable "nsg_name" {
+  type        = string
+  description = "Name of the Network Security Group"
+}
+
+variable "nsg_rule_http" {
+  type        = string
+  description = "Name of the security rule for HTTP"
+}
+
+variable "nsg_rule_ssh" {
+  type        = string
+  description = "Name of the security rule for SSH"
+}
+
+variable "nic_name" {
+  type        = string
+  description = "Name of the Network interface"
+}
+
+variable "ip_conf_name" {
+  type        = string
+  description = "Name of NIC's configuration"
+}
+
+variable "vm_name" {
+  type        = string
+  description = "Name of the Virtual Machine"
+}
 variable "vm_size" {
   type        = string
   description = "VM size"
 }
 
-variable "vm_name" {
+variable "image_publisher" {
   type        = string
-  description = "VM name"
+  description = "Image SKU"
+}
+
+variable "image_offer" {
+  type        = string
+  description = "Image SKU"
 }
 
 variable "image_SKU" {
@@ -44,26 +88,9 @@ variable "image_SKU" {
   description = "Image SKU"
 }
 
-variable "linux_username" {
+variable "disk_name" {
   type        = string
-  description = "Username of the admin"
-}
-
-variable "linux_password" {
-  type        = string
-  sensitive   = true
-  description = "Password of the admin"
-}
-
-variable "domain_name_label" {
-  type        = string
-  default     = "cmtr-927242a5-nginx"
-  description = "DNS"
-}
-
-variable "my_disk_name" {
-  type        = string
-  description = "Name of os_disk"
+  description = "Name of the os_disk"
 }
 
 variable "sa_type" {
@@ -71,39 +98,15 @@ variable "sa_type" {
   description = "Storage account type for os_disk"
 }
 
-variable "public_ip" {
+variable "linux_username" {
   type        = string
-  description = "Name of Public IP"
+  description = "Username for the admin"
 }
 
-variable "nsg_name" {
+variable "linux_password" {
   type        = string
-  description = "Name of NSG"
-}
-
-variable "nic_name" {
-  type        = string
-  description = "Name of NIC"
-}
-
-variable "my_conf_name" {
-  type        = string
-  description = "Name of NIC's configuration"
-}
-
-variable "nsg_rule_http" {
-  type        = string
-  description = "Name of security rule HTTP"
-}
-
-variable "nsg_rule_ssh" {
-  type        = string
-  description = "Name of security rule SSH"
-}
-
-variable "ext_name" {
-  type        = string
-  description = "Name of VM extensions"
+  sensitive   = true
+  description = "Password for the admin"
 }
 
 variable "tags" {
