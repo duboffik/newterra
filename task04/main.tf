@@ -55,7 +55,6 @@ resource "azurerm_network_security_rule" "http" {
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.this.name
   network_security_group_name = azurerm_network_security_group.this.name
-  tags                        = var.tags
 }
 
 resource "azurerm_network_security_rule" "ssh" {
@@ -70,7 +69,6 @@ resource "azurerm_network_security_rule" "ssh" {
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.this.name
   network_security_group_name = azurerm_network_security_group.this.name
-  tags                        = var.tags
 }
 
 # Create network interface
