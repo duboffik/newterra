@@ -6,6 +6,7 @@ provider "azurerm" {
 resource "azurerm_resource_group" "this" {
   name     = var.rg_name
   location = var.rg_location
+  tags     = var.tags
 }
 
 # Create vNet
@@ -14,6 +15,7 @@ resource "azurerm_virtual_network" "this" {
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
   address_space       = ["${var.vnet_address}"]
+  tags                = var.tags
 }
 
 # Create Subnet
@@ -31,12 +33,14 @@ resource "azurerm_public_ip" "this" {
   location            = azurerm_resource_group.this.location
   allocation_method   = "Dynamic"
   domain_name_label   = var.domain_name_label
+  tags                = var.tags
 }
 
 resource "azurerm_network_security_group" "this" {
   name                = var.nsg_name
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
+  tags                = var.tags
 }
 
 resource "azurerm_network_security_rule" "http" {
@@ -51,6 +55,7 @@ resource "azurerm_network_security_rule" "http" {
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.this.name
   network_security_group_name = azurerm_network_security_group.this.name
+  tags                        = var.tags
 }
 
 resource "azurerm_network_security_rule" "ssh" {
@@ -65,6 +70,7 @@ resource "azurerm_network_security_rule" "ssh" {
   destination_address_prefix  = "*"
   resource_group_name         = azurerm_resource_group.this.name
   network_security_group_name = azurerm_network_security_group.this.name
+  tags                        = var.tags
 }
 
 # Create network interface
@@ -72,6 +78,7 @@ resource "azurerm_network_interface" "this" {
   name                = var.nic_name
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
+  tags                = var.tags
 
   ip_configuration {
     name                          = var.ip_conf_name
@@ -85,6 +92,7 @@ resource "azurerm_network_interface" "this" {
 resource "azurerm_network_interface_security_group_association" "this" {
   network_interface_id      = azurerm_network_interface.this.id
   network_security_group_id = azurerm_network_security_group.this.id
+  tags                      = var.tags
 }
 
 # Create virtual machine
@@ -95,6 +103,7 @@ resource "azurerm_linux_virtual_machine" "this" {
   network_interface_ids           = [azurerm_network_interface.this.id]
   size                            = var.vm_size
   disable_password_authentication = false
+  tags                            = var.tags
 
   os_disk {
     name                 = var.disk_name
