@@ -105,3 +105,9 @@ variable "ext_name" {
   type        = string
   description = "Name of VM extensions"
 }
+
+variable "tags" {
+  description = "A mapping of tags that should be assigned to resources"
+  type        = map(string)
+  default     = {}
+}

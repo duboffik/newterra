@@ -18,3 +18,6 @@ my_conf_name      = "my_nic_configuration"
 ext_name          = "my_ext"
 sa_type           = "Standard_LRS"
 my_disk_name      = "my_disk_name"
+tags = {
+  Creator = "dzmitry_dubovik@epam.com"
+}
