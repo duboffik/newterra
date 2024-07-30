@@ -5,7 +5,7 @@ provider "azurerm" {
 # Create Resource group
 resource "azurerm_resource_group" "this" {
   name     = var.rg_name
-  location = var.rg_location
+  location = var.location
   tags     = var.tags
 }
 

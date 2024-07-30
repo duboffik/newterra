@@ -4,7 +4,7 @@ variable "rg_name" {
   description = "The Name which should be used for this Resource Group"
 }
 
-variable "rg_location" {
+variable "location" {
   type        = string
   description = "The Azure Region where the Resource Group and Resources should exist"
 }
