@@ -1,5 +1,5 @@
 rg_name           = "cmaz-927242a5-mod4-rg"
-rg_location       = "eastus"
+location          = "eastus"
 vnet_name         = "cmaz-927242a5-mod4-vnet"
 vnet_address      = "10.0.0.0/16"
 subnet_name       = "frontend"
