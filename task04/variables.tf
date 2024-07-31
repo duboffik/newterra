@@ -105,7 +105,7 @@ variable "linux_username" {
 
 variable "linux_password" {
   type        = string
-  sensitive   = true
+  sensitive   = "true"
   description = "Password for the admin"
 }
 
