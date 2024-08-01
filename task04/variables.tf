@@ -1,6 +1,7 @@
 #my_variables
 variable "rg_name" {
   type        = string
+  default     = "backend"
   description = "The Name which should be used for this Resource Group"
 }
 
