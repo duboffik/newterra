@@ -40,7 +40,6 @@ variable "public_ip" {
 
 variable "rg_name" {
   type        = string
-  default     = "backend"
   description = "The Name which should be used for this Resource Group"
 }
 
