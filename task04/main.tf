@@ -14,7 +14,7 @@ resource "azurerm_virtual_network" "this" {
   name                = var.vnet_name
   resource_group_name = azurerm_resource_group.this.name
   location            = azurerm_resource_group.this.location
-  address_space       = ["${var.vnet_address}"]
+  address_space       = var.vnet_address_space
   tags                = var.tags
 }
 
@@ -23,7 +23,7 @@ resource "azurerm_subnet" "this" {
   name                 = var.subnet_name
   virtual_network_name = azurerm_virtual_network.this.name
   resource_group_name  = azurerm_resource_group.this.name
-  address_prefixes     = ["${var.subnet_prefixes}"]
+  address_prefixes     = var.subnet_address_prefixes
 }
 
 # Create Public IP
@@ -79,7 +79,7 @@ resource "azurerm_network_interface" "this" {
   tags                = var.tags
 
   ip_configuration {
-    name                          = var.ip_conf_name
+    name                          = var.nic_ip_conf_name
     subnet_id                     = azurerm_subnet.this.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.this.id
@@ -103,21 +103,21 @@ resource "azurerm_linux_virtual_machine" "this" {
   tags                            = var.tags
 
   os_disk {
-    name                 = var.disk_name
+    name                 = var.vm_disk_name
     caching              = "ReadWrite"
-    storage_account_type = var.sa_type
+    storage_account_type = var.vm_sa_type
   }
 
   source_image_reference {
-    publisher = var.image_publisher
-    offer     = var.image_offer
-    sku       = var.image_SKU
+    publisher = var.vm_image_publisher
+    offer     = var.vm_image_offer
+    sku       = var.vm_image_SKU
     version   = "latest"
   }
 
   computer_name  = var.vm_name
-  admin_username = var.linux_username
-  admin_password = var.linux_password
+  admin_username = var.vm_username
+  admin_password = var.vm_password
 
   # Remote-exec provisioner (NGINX configuration)
   provisioner "remote-exec" {
@@ -127,8 +127,8 @@ resource "azurerm_linux_virtual_machine" "this" {
     ]
     connection {
       type     = "ssh"
-      user     = var.linux_username
-      password = var.linux_password
+      user     = var.vm_username
+      password = var.vm_password
       host     = azurerm_public_ip.this.fqdn
     }
   }
