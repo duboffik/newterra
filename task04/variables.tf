@@ -86,7 +86,7 @@ variable "vm_name" {
 
 variable "vm_password" {
   type        = string
-  sensitive   = "true"
+  sensitive   = true
   description = "Password for the admin"
 }
 
