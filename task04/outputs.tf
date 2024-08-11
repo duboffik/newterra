@@ -1,4 +1,4 @@
-Output "vm_public_ip" {
+output "vm_public_ip" {
   description = "Public IP of the Virtual machine"
   value       = azurerm_linux_virtual_machine.this.public_ip_address
 }

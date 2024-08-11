@@ -120,7 +120,7 @@ resource "azurerm_linux_virtual_machine" "this" {
   admin_password = var.vm_password
 
   # Remote-exec provisioner (NGINX configuration)
-  provisioner "Remote-Exec" {
+  provisioner "remote-exec" {
     inline = [
       "sudo apt update",
       "sudo apt install nginx -y"
