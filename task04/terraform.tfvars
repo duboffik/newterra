@@ -22,3 +22,4 @@ vm_size            = "Standard_F2s_v2"
 vm_username        = "azureuser"
 vnet_address_space = ["10.0.0.0/16"]
 vnet_name          = "cmaz-12345678-mod4-vnet"
+vnet_name                    = "cmaz-12345678-mod4-vnet"
