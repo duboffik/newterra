@@ -1,14 +1,14 @@
 output "rg_id" {
-  description = "rg_id"
-  value       = azurerm_resource_group.my_RG.id
+  description = "The ID of the Resource Group"
+  value       = azurerm_resource_group.this.id
 }
 
 output "sa_blob_endpoint" {
-  description = "sa_blob_endpoint"
-  value       = azurerm_storage_account.my_SA.primary_blob_endpoint
+  description = "The blob endpoint URL of storage account"
+  value       = azurerm_storage_account.this.primary_blob_endpoint
 }
 
 output "vnet_id" {
-  description = "VNET_id"
-  value       = azurerm_virtual_network.my_VNET.id
+  description = "The ID of the Virtual Network"
+  value       = azurerm_virtual_network.this.id
 }
