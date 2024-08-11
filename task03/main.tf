@@ -2,51 +2,39 @@ provider "azurerm" {
   features {}
 }
 
-# Create Resource group
-resource "azurerm_resource_group" "my_RG" {
+resource "azurerm_resource_group" "this" {
   name     = var.rg_name
-  location = var.rg_location
-  tags = {
-    Creator = "dzmitry_dubovik@epam.com"
-  }
+  location = var.location
+  tags     = var.tags
 }
 
-# Create vNet
-resource "azurerm_virtual_network" "my_VNET" {
+resource "azurerm_storage_account" "this" {
+  name                     = var.storage_account_name
+  resource_group_name      = azurerm_resource_group.this.name
+  location                 = var.location
+  account_tier             = "Standard"
+  account_replication_type = var.storage_account_replication_type
+  tags                     = var.tags
+}
+
+resource "azurerm_virtual_network" "this" {
   name                = var.vnet_name
-  resource_group_name = azurerm_resource_group.my_RG.name
-  location            = azurerm_resource_group.my_RG.location
-  address_space       = ["${var.vnet_address}"]
-  tags = {
-    Creator = "dzmitry_dubovik@epam.com"
-  }
+  location            = var.location
+  resource_group_name = azurerm_resource_group.this.name
+  address_space       = var.vnet_address_space
+  tags                = var.tags
 }
 
-# Create Subnet
-resource "azurerm_subnet" "my_SNET1" {
-  name                 = var.snet_name1
-  virtual_network_name = azurerm_virtual_network.my_VNET.name
-  resource_group_name  = azurerm_resource_group.my_RG.name
-  address_prefixes     = ["${var.snet1_prefixes}"]
+resource "azurerm_subnet" "public" {
+  name                 = var.public_snet_name
+  resource_group_name  = azurerm_resource_group.this.name
+  virtual_network_name = azurerm_virtual_network.this.name
+  address_prefixes     = var.public_snet_address_prefixes
 }
 
-# Create Subnet
-resource "azurerm_subnet" "my_SNET2" {
-  name                 = var.snet_name2
-  virtual_network_name = azurerm_virtual_network.my_VNET.name
-  resource_group_name  = azurerm_resource_group.my_RG.name
-  address_prefixes     = ["${var.snet2_prefixes}"]
-}
-
-# Create Storage account
-resource "azurerm_storage_account" "my_SA" {
-  name                     = var.sa_name
-  resource_group_name      = azurerm_resource_group.my_RG.name
-  location                 = azurerm_resource_group.my_RG.location
-  account_kind             = "BlockBlobStorage"
-  account_tier             = "Premium"
-  account_replication_type = "LRS"
-  tags = {
-    Creator = "dzmitry_dubovik@epam.com"
-  }
+resource "azurerm_subnet" "private" {
+  name                 = var.private_snet_name
+  resource_group_name  = azurerm_resource_group.this.name
+  virtual_network_name = azurerm_virtual_network.this.name
+  address_prefixes     = var.private_snet_address_prefixes
 }
