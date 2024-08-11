@@ -7,7 +7,7 @@ resource "azurerm_resource_group" "my_RG" {
   name     = var.rg_name
   location = var.rg_location
   tags = {
-    Creator = "dzmitry_dubovik@epam.com"
+    Creator = "name_surname@epam.com"
   }
 }
 
@@ -18,7 +18,7 @@ resource "azurerm_virtual_network" "my_VNET" {
   location            = azurerm_resource_group.my_RG.location
   address_space       = ["${var.vnet_address}"]
   tags = {
-    Creator = "dzmitry_dubovik@epam.com"
+    Creator = "name_surname@epam.com"
   }
 }
 
@@ -47,6 +47,6 @@ resource "azurerm_storage_account" "my_SA" {
   account_tier             = "Premium"
   account_replication_type = "LRS"
   tags = {
-    Creator = "dzmitry_dubovik@epam.com"
+    Creator = "name_surname@epam.com"
   }
 }
