@@ -118,26 +118,18 @@ resource "azurerm_linux_virtual_machine" "this" {
   computer_name  = var.vm_name
   admin_username = var.vm_username
   admin_password = var.vm_password
-  resource "null_resource" "script_runner" {
-    provisioner "local-exec" {
-      command = "bash ${path.module}/scripts/my_script.sh"
-    }
 
-    triggers = {
-      always_run = "${timestamp()}"
+  # Remote-exec provisioner (NGINX configuration)
+  provisioner "remote-exec" {
+    inline = [
+      "sudo apt update",
+      "sudo apt install nginx -y"
+    ]
+    connection {
+      type     = "ssh"
+      user     = var.vm_username
+      password = var.vm_password
+      host     = azurerm_public_ip.this.fqdn
     }
   }
-  # Remote-exec provisioner (NGINX configuration)
-  #  provisioner "remote-exec" {
-  #    inline = [
-  #      "sudo apt update",
-  #      "sudo apt install nginx -y"
-  #    ]
-  #    connection {
-  #      type     = "ssh"
-  #      user     = var.vm_username
-  #      password = var.vm_password
-  #      host     = azurerm_public_ip.this.fqdn
-  #    }
-  #  }
 }
