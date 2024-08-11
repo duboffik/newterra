@@ -12,6 +12,12 @@ subnet_address_prefixes = ["10.0.1.0/24"]
 tags = {
   Creator = "name_surname@epam.com"
 }
+
+
+
+
+
+
 vm_disk_name       = "disk_name"
 vm_image_publisher = "Canonical"
 vm_image_offer     = "ubuntu-24_04-lts"
