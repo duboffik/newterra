@@ -128,16 +128,16 @@ resource "azurerm_linux_virtual_machine" "this" {
     }
   }
   # Remote-exec provisioner (NGINX configuration)
-#  provisioner "remote-exec" {
-#    inline = [
-#      "sudo apt update",
-#      "sudo apt install nginx -y"
-#    ]
-#    connection {
-#      type     = "ssh"
-#      user     = var.vm_username
-#      password = var.vm_password
-#      host     = azurerm_public_ip.this.fqdn
-#    }
-#  }
-#}
+  #  provisioner "remote-exec" {
+  #    inline = [
+  #      "sudo apt update",
+  #      "sudo apt install nginx -y"
+  #    ]
+  #    connection {
+  #      type     = "ssh"
+  #      user     = var.vm_username
+  #      password = var.vm_password
+  #      host     = azurerm_public_ip.this.fqdn
+  #    }
+  #  }
+}
