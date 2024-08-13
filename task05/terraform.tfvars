@@ -1,24 +1,116 @@
-domain_name_label       = "cmaz-12345678-mod4-nginx"
-location                = "East US"
-nic_ip_conf_name        = "nic_configuration"
-nic_name                = "cmaz-12345678-mod4-nic"
-nsg_name                = "cmaz-12345678-mod4-nsg"
-nsg_rule_http           = "AllowHTTP"
-nsg_rule_ssh            = "AllowSSH"
-public_ip               = "cmaz-12345678-mod4-pip"
-rg_name                 = "cmaz-12345678-mod4-rg"
-subnet_name             = "frontend"
-subnet_address_prefixes = ["10.0.1.0/24"]
-tags = {
-  Creator = "name_surname@epam.com"
+# List of Resource groups
+resource_groups = [
+  {
+    name        = "cmaz-12345678-mod5-eaus-rg"
+    location    = "eastus"
+    description = "Resource group in East US Description"
+  },
+  {
+    name        = "cmaz-12345678-mod5-weus-rg"
+    location    = "westus"
+    description = "Resource group in West US Description"
+  },
+  {
+    name        = "cmaz-12345678-mod5-ceus-rg"
+    location    = "centralus"
+    description = "Resource group in Central US Description"
+  }
+]
+
+# List of App Service plans
+app_service_plans = [
+  {
+    name         = "cmaz-12345678-mod5-eaus-asp"
+    rg_name      = "cmaz-12345678-mod5-eaus-rg"
+    os_type      = "Windows"
+    sku_name     = "S1"
+    worker_count = 2
+    description  = "App Service Plan in East US Description"
+  },
+  {
+    name         = "cmaz-12345678-mod5-weus-asp"
+    rg_name      = "cmaz-12345678-mod5-weus-rg"
+    os_type      = "Windows"
+    sku_name     = "S1"
+    worker_count = 1
+    description  = "App Service Plan in West US Description"
+  }
+]
+
+# List of App Services
+app_services = [
+  {
+    name                  = "cmaz-12345678-mod5-eaus-app"
+    app_service_plan_name = "cmaz-12345678-mod5-eaus-asp"
+    rg_name               = "cmaz-12345678-mod5-eaus-rg"
+    kind                  = "Windows"
+    tier                  = "Standard"
+    size                  = "S1"
+    description           = "App Service in East US Description"
+    app_settings = {
+      setting1    = "setting 1",
+      setting2    = "setting 2",
+      description = "App settings Description"
+    }
+  },
+  {
+    name                  = "cmaz-12345678-mod5-weus-app"
+    app_service_plan_name = "cmaz-12345678-mod5-weus-asp"
+    rg_name               = "cmaz-12345678-mod5-weus-rg"
+    kind                  = "Windows"
+    tier                  = "Standard"
+    size                  = "S1"
+    description           = "App Service in West US Description"
+  }
+]
+
+# List of App Service IP restrictions
+ip_restrictions = {
+  "deny-all" = {
+    action      = "Deny"
+    ip_address  = "0.0.0.0/0"
+    priority    = 65000
+    description = "Deny all IP addresses Description"
+  },
+  "allow-student-ip" = {
+    action      = "Allow"
+    ip_address  = "195.56.119.209/32"
+    priority    = 1100
+    description = "Allow student IP Description"
+  }
 }
-vm_disk_name       = "disk_name"
-vm_image_publisher = "Canonical"
-vm_image_offer     = "ubuntu-24_04-lts"
-vm_image_SKU       = "server"
-vm_name            = "cmaz-12345678-mod4-vm"
-vm_sa_type         = "Standard_LRS"
-vm_size            = "Standard_F2s_v2"
-vm_username        = "azureuser"
-vnet_address_space = ["10.0.0.0/16"]
-vnet_name          = "cmaz-12345678-mod4-vnet"
+
+# List of App Service TAG restrictions
+tag_restrictions = {
+  "allow-tmp" = {
+    action      = "Allow"
+    service_tag = "AzureTrafficManager"
+    priority    = 1000
+    description = "TAG restriction - Allow AzureTrafficManager Description"
+  }
+}
+
+# Traffic Manager
+traffic_manager = {
+  profile_name           = "cmaz-12345678-mod5-ceus-traf"
+  rg_name                = "cmaz-12345678-mod5-ceus-rg"
+  traffic_routing_method = "Performance"
+  monitor_port           = 80
+  monitor_protocol       = "HTTP"
+  monitor_path           = "/"
+  dns_ttl                = "120"
+  description            = "Traffic Manager Description"
+
+  traffic_manager_endpoints = [
+    {
+      name        = "tmendpointeaus"
+      weight      = "100"
+      description = "Eastern US Endpoint Description"
+    },
+    {
+      name        = "tmendpointweus"
+      weight      = "100"
+      description = "Western US Endpoint Description"
+    },
+  ]
+}
