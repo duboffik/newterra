@@ -1,45 +1,45 @@
 # List of Resource groups
-resource_groups = [
-  {
+resource_groups = {
+  rg_1 = {
     name        = "cmaz-12345678-mod5-eaus-rg"
     location    = "eastus"
     description = "Resource group in East US Description"
   },
-  {
+  rg_2 = {
     name        = "cmaz-12345678-mod5-weus-rg"
     location    = "westus"
     description = "Resource group in West US Description"
   },
-  {
+  rg_3 = {
     name        = "cmaz-12345678-mod5-ceus-rg"
     location    = "centralus"
     description = "Resource group in Central US Description"
   }
-]
+}
 
 # List of App Service plans
-app_service_plans = [
-  {
-    name         = "cmaz-12345678-mod5-eaus-asp"
-    rg_name      = "cmaz-12345678-mod5-eaus-rg"
-    os_type      = "Windows"
-    sku_name     = "S1"
-    worker_count = 2
-    description  = "App Service Plan in East US Description"
+app_service_plans = {
+  "app_service_plan1" : {
+    "name" : "cmaz-12345678-mod5-eaus-asp",
+    "rg_name" : "cmaz-12345678-mod5-eaus-rg",
+    "os_type" : "Windows",
+    "sku_name" : "S1",
+    "worker_count" : 2,
+    "description" : "App Service Plan in East US Description"
   },
-  {
-    name         = "cmaz-12345678-mod5-weus-asp"
-    rg_name      = "cmaz-12345678-mod5-weus-rg"
-    os_type      = "Windows"
-    sku_name     = "S1"
-    worker_count = 1
-    description  = "App Service Plan in West US Description"
+  "app_service_plan2" : {
+    "name" : "cmaz-12345678-mod5-weus-asp",
+    "rg_name" : "cmaz-12345678-mod5-weus-rg",
+    "os_type" : "Windows",
+    "sku_name" : "S1",
+    "worker_count" : 1,
+    "description" : "App Service Plan in West US Description"
   }
-]
+}
 
 # List of App Services
-app_services = [
-  {
+app_services = {
+  app1 = {
     name                  = "cmaz-12345678-mod5-eaus-app"
     app_service_plan_name = "cmaz-12345678-mod5-eaus-asp"
     rg_name               = "cmaz-12345678-mod5-eaus-rg"
@@ -47,13 +47,8 @@ app_services = [
     tier                  = "Standard"
     size                  = "S1"
     description           = "App Service in East US Description"
-    app_settings = {
-      setting1    = "setting 1",
-      setting2    = "setting 2",
-      description = "App settings Description"
-    }
   },
-  {
+  app2 = {
     name                  = "cmaz-12345678-mod5-weus-app"
     app_service_plan_name = "cmaz-12345678-mod5-weus-asp"
     rg_name               = "cmaz-12345678-mod5-weus-rg"
@@ -62,7 +57,7 @@ app_services = [
     size                  = "S1"
     description           = "App Service in West US Description"
   }
-]
+}
 
 # List of App Service IP restrictions
 ip_restrictions = {

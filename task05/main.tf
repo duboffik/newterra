@@ -1,3 +1,7 @@
+provider "azurerm" {
+  features {}
+}
+
 # Create Resource group
 module "resource_group" {
   source   = ".\\modules\\resource_group"
