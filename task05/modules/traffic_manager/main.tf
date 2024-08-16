@@ -4,6 +4,7 @@ resource "azurerm_traffic_manager_profile" "main" {
   resource_group_name    = var.rg_name
   traffic_routing_method = var.traffic_routing_method
   max_return             = var.max_return
+  tag                    = var.tags
 
   dns_config {
     relative_name = var.profile_name

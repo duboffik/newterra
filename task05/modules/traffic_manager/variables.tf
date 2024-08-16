@@ -47,3 +47,8 @@ variable "traffic_manager_endpoints" {
   description = "The endpoint of the thaffic manager."
   type        = list(any)
 }
+variable "tags" {
+  description = "A mapping of tags that should be assigned to resources"
+  type        = map(string)
+  default     = {}
+}
