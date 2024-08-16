@@ -4,7 +4,7 @@ resource "azurerm_windows_web_app" "main" {
   location            = var.location
   resource_group_name = var.rg_name
   service_plan_id     = var.service_plan_id
-  tags                = var.tag
+  tags                = var.tags
   app_settings        = var.app_settings
 
   site_config {

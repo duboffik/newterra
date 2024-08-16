@@ -45,3 +45,8 @@ variable "tag_restrictions" {
     priority    = number
   }))
 }
+variable "tags" {
+  description = "A mapping of tags that should be assigned to resources"
+  type        = map(string)
+  default     = {}
+}

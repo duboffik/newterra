@@ -27,3 +27,8 @@ variable "worker_count" {
   description = "The number of Workers (instances) to be allocated."
   type        = string
 }
+variable "tags" {
+  description = "A mapping of tags that should be assigned to resources"
+  type        = map(string)
+  default     = {}
+}
