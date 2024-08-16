@@ -52,6 +52,12 @@ variable "tag_restrictions" {
   description = "A map of TAG-based restrictions configurations"
 }
 
+variable "tags" {
+  description = "A mapping of tags that should be assigned to resources"
+  type        = map(string)
+  default     = {}
+}
+
 variable "traffic_manager" {
   type = object({
     profile_name           = string

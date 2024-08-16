@@ -19,21 +19,21 @@ resource_groups = {
 
 # List of App Service plans
 app_service_plans = {
-  "app_service_plan1" : {
-    "name" : "cmaz-12345678-mod5-eastus-asp",
-    "rg_name" : "cmaz-12345678-mod5-eastus-rg",
-    "os_type" : "Windows",
-    "sku_name" : "S1",
-    "worker_count" : 2,
-    "description" : "App Service Plan in East US Description"
+  app_service_plan1 = {
+    name         = "cmaz-12345678-mod5-eastus-asp"
+    rg_name      = "cmaz-12345678-mod5-eastus-rg"
+    os_type      = "Windows"
+    sku_name     = "S1"
+    worker_count = 2
+    description  = "App Service Plan in East US Description"
   },
-  "app_service_plan2" : {
-    "name" : "cmaz-12345678-mod5-westus-asp",
-    "rg_name" : "cmaz-12345678-mod5-westus-rg",
-    "os_type" : "Windows",
-    "sku_name" : "S1",
-    "worker_count" : 1,
-    "description" : "App Service Plan in West US Description"
+  app_service_plan2 = {
+    name         = "cmaz-12345678-mod5-westus-asp"
+    rg_name      = "cmaz-12345678-mod5-westus-rg"
+    os_type      = "Windows"
+    sku_name     = "S1"
+    worker_count = 1
+    description  = "App Service Plan in West US Description"
   }
 }
 
@@ -85,6 +85,11 @@ tag_restrictions = {
   }
 }
 
+# Tags
+tags = {
+  Creator = "name_surname@epam.com"
+}
+
 # Traffic Manager
 traffic_manager = {
   profile_name           = "cmaz-12345678-mod5-centralus-traf"
@@ -109,3 +114,4 @@ traffic_manager = {
     },
   ]
 }
+
