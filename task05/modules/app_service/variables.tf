@@ -28,12 +28,18 @@ variable "app_settings" {
   type        = map(string)
 }
 
+variable "ip" {
+  type        = string
+  description = "Allowed IP address."
+}
+
 variable "ip_restrictions" {
-  description = "The block that contains ip restritions of the Windows App Service."
+  description = "Map of IP restrictions for the App Service"
   type = map(object({
-    action     = string
-    ip_address = string
-    priority   = number
+    action      = string
+    ip_address  = string
+    priority    = number
+    description = string
   }))
 }
 
@@ -43,6 +49,7 @@ variable "tag_restrictions" {
     action      = string
     service_tag = string
     priority    = number
+    description = string
   }))
 }
 variable "tags" {

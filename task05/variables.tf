@@ -23,6 +23,11 @@ variable "app_services" {
   description = "A map of Azure App Service configurations"
 }
 
+variable "ip" {
+  description = "IP address"
+  type        = string
+}
+
 variable "ip_restrictions" {
   type = map(object({
     action      = string

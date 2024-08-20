@@ -33,6 +33,7 @@ module "app_service" {
   service_plan_id  = module.app_service_plan[each.value.app_service_plan_name].app_service_plan_id
   site_config      = lookup(each.value, "site_config", null)
   app_settings     = lookup(each.value, "app_settings", null)
+  ip               = var.ip
   ip_restrictions  = var.ip_restrictions
   tag_restrictions = var.tag_restrictions
   depends_on       = [module.app_service_plan]
