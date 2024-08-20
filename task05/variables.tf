@@ -30,8 +30,8 @@ variable "ip" {
 
 variable "ip_restrictions" {
   type = map(object({
-    action      = string
-    ip_address  = string
+    action = string
+    #ip_address  = string
     priority    = number
     description = string
   }))

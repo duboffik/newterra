@@ -68,8 +68,8 @@ ip_restrictions = {
     description = "Deny all IP addresses Description"
   },
   "allow-student-ip" = {
-    action      = "Allow"
-    ip_address  = "195.56.119.209/32"
+    action = "Allow"
+    #ip_address  = "195.56.119.209/32"
     priority    = 1100
     description = "Allow student IP Description"
   }

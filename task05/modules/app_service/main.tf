@@ -14,7 +14,7 @@ resource "azurerm_windows_web_app" "main" {
       content {
         name        = ip_restriction.key
         action      = ip_restriction.value.action
-        ip_address  = ip_restriction.value.ip_address
+        ip_address  = var.ip
         priority    = ip_restriction.value.priority
         description = ip_restriction.value.description
       }
