@@ -8,6 +8,7 @@ module "resource_group" {
   for_each = { for rg in var.resource_groups : rg.name => rg }
   name     = each.key
   location = each.value.location
+  tags     = var.tags
 }
 
 # Create App Service plan
@@ -21,6 +22,7 @@ module "app_service_plan" {
   sku_name     = each.value.sku_name
   worker_count = each.value.worker_count
   depends_on   = [module.resource_group]
+  tags         = var.tags
 }
 
 # Create App Service
@@ -37,6 +39,7 @@ module "app_service" {
   ip_restrictions  = var.ip_restrictions
   tag_restrictions = var.tag_restrictions
   depends_on       = [module.app_service_plan]
+  tags             = var.tags
 }
 
 # Create Traffic Manager
@@ -52,4 +55,5 @@ module "traffic_manager" {
   target_resource_ids       = [for k in module.app_service : k.id]
   traffic_manager_endpoints = var.traffic_manager.traffic_manager_endpoints
   depends_on                = [module.app_service]
+  tags                      = var.tags
 }
