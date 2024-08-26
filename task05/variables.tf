@@ -24,14 +24,14 @@ variable "app_services" {
 }
 
 variable "ip" {
-  description = "IP address"
+  description = "Student IP address"
   type        = string
 }
 
 variable "ip_restrictions" {
   type = map(object({
-    action = string
-    #ip_address  = string
+    action      = string
+    ip_address  = string
     priority    = number
     description = string
   }))

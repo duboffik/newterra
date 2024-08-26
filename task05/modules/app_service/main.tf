@@ -8,27 +8,16 @@ resource "azurerm_windows_web_app" "main" {
   app_settings        = var.app_settings
 
   site_config {
+
     # Handle IP restrictions
     dynamic "ip_restriction" {
       for_each = var.ip_restrictions
       content {
         name        = ip_restriction.key
         action      = ip_restriction.value.action
-        ip_address  = var.ip
-        priority    = ip_restriction.value.priority
+        ip_address  = ip_restriction.value.ip_address != "" ? ip_restriction.value.ip_address : "${var.ip}/32"
         description = ip_restriction.value.description
-      }
-    }
-
-    # Handle tag restrictions
-    dynamic "ip_restriction" {
-      for_each = var.tag_restrictions
-      content {
-        name        = ip_restriction.key
-        action      = ip_restriction.value.action
-        service_tag = ip_restriction.value.service_tag
         priority    = ip_restriction.value.priority
-        description = ip_restriction.value.description
       }
     }
   }

@@ -4,7 +4,7 @@ provider "azurerm" {
 
 # Create Resource group
 module "resource_group" {
-  source   = ".\\modules\\resource_group"
+  source   = "./modules/resource_group"
   for_each = { for rg in var.resource_groups : rg.name => rg }
   name     = each.key
   location = each.value.location
@@ -13,7 +13,7 @@ module "resource_group" {
 
 # Create App Service plan
 module "app_service_plan" {
-  source       = ".\\modules\\app_service_plan"
+  source       = "./modules/app_service_plan"
   for_each     = { for asp in var.app_service_plans : asp.name => asp }
   name         = each.key
   rg_name      = each.value.rg_name
@@ -27,7 +27,7 @@ module "app_service_plan" {
 
 # Create App Service
 module "app_service" {
-  source           = ".\\modules\\app_service"
+  source           = "./modules/app_service"
   for_each         = { for as in var.app_services : as.name => as }
   name             = each.key
   rg_name          = each.value.rg_name
@@ -35,8 +35,8 @@ module "app_service" {
   service_plan_id  = module.app_service_plan[each.value.app_service_plan_name].app_service_plan_id
   site_config      = lookup(each.value, "site_config", null)
   app_settings     = lookup(each.value, "app_settings", null)
-  ip               = var.ip
   ip_restrictions  = var.ip_restrictions
+  ip               = var.ip
   tag_restrictions = var.tag_restrictions
   depends_on       = [module.app_service_plan]
   tags             = var.tags
@@ -44,7 +44,7 @@ module "app_service" {
 
 # Create Traffic Manager
 module "traffic_manager" {
-  source                    = ".\\modules\\traffic_manager"
+  source                    = "./modules/traffic_manager"
   profile_name              = var.traffic_manager.profile_name
   rg_name                   = var.traffic_manager.rg_name
   traffic_routing_method    = var.traffic_manager.traffic_routing_method

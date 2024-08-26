@@ -36,8 +36,8 @@ variable "ip" {
 variable "ip_restrictions" {
   description = "Map of IP restrictions for the App Service"
   type = map(object({
-    action = string
-    #ip_address  = string
+    action      = string
+    ip_address  = string
     priority    = number
     description = string
   }))
