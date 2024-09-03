@@ -20,5 +20,17 @@ resource "azurerm_windows_web_app" "main" {
         priority    = ip_restriction.value.priority
       }
     }
+
+    # Handle tag restrictions
+    dynamic "ip_restriction" {
+      for_each = var.tag_restrictions
+      content {
+        name        = ip_restriction.key
+        action      = ip_restriction.value.action
+        service_tag = ip_restriction.value.service_tag
+        priority    = ip_restriction.value.priority
+        description = ip_restriction.value.description
+      }
+    }
   }
 }
