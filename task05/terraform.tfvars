@@ -2,12 +2,12 @@
 resource_groups = {
   rg_1 = {
     name        = "cmaz-12345678-mod5-eastus-rg"
-    location    = "eastus"
+    location    = "eastus 2"
     description = "Resource group in East US Description"
   },
   rg_2 = {
     name        = "cmaz-12345678-mod5-westus-rg"
-    location    = "westus"
+    location    = "westus 2"
     description = "Resource group in West US Description"
   },
   rg_3 = {
