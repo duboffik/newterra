@@ -2,18 +2,18 @@
 resource_groups = {
   rg_1 = {
     name        = "cmaz-12345678-mod5-location1-rg"
-    location    = "canadacentral"
-    description = "Resource group in East US Description"
+    location    = "canadaeast"
+    description = "Resource group in location1 Description"
   },
   rg_2 = {
     name        = "cmaz-12345678-mod5-location2-rg"
-    location    = "location2"
-    description = "Resource group in West US Description"
+    location    = "westus"
+    description = "Resource group in location2 Description"
   },
   rg_3 = {
     name        = "cmaz-12345678-mod5-location3-rg"
-    location    = "location3"
-    description = "Resource group in Central US Description"
+    location    = "centralus"
+    description = "Resource group in location3 Description"
   }
 }
 
@@ -25,7 +25,7 @@ app_service_plans = {
     os_type      = "Windows"
     sku_name     = "S1"
     worker_count = 2
-    description  = "App Service Plan in East US Description"
+    description  = "App Service Plan in location1 Description"
   },
   app_service_plan2 = {
     name         = "cmaz-12345678-mod5-location2-asp"
@@ -33,7 +33,7 @@ app_service_plans = {
     os_type      = "Windows"
     sku_name     = "S1"
     worker_count = 1
-    description  = "App Service Plan in West US Description"
+    description  = "App Service Plan in location2 Description"
   }
 }
 
@@ -46,7 +46,7 @@ app_services = {
     kind                  = "Windows"
     tier                  = "Standard"
     size                  = "S1"
-    description           = "App Service in East US Description"
+    description           = "App Service in location1 Description"
   },
   app2 = {
     name                  = "cmaz-12345678-mod5-location2-app"
@@ -55,7 +55,7 @@ app_services = {
     kind                  = "Windows"
     tier                  = "Standard"
     size                  = "S1"
-    description           = "App Service in West US Description"
+    description           = "App Service in location2 Description"
   }
 }
 
