@@ -1,17 +1,17 @@
 # List of Resource groups
 resource_groups = {
   rg_1 = {
-    name        = "cmaz-12345679-mod5-location1-rg"
+    name        = "cmaz-12345678-mod5-location1-rg"
     location    = "canadacentral"
     description = "Resource group in East US Description"
   },
   rg_2 = {
-    name        = "cmaz-12345679-mod5-location2-rg"
+    name        = "cmaz-12345678-mod5-location2-rg"
     location    = "location2"
     description = "Resource group in West US Description"
   },
   rg_3 = {
-    name        = "cmaz-12345679-mod5-location3-rg"
+    name        = "cmaz-12345678-mod5-location3-rg"
     location    = "location3"
     description = "Resource group in Central US Description"
   }
@@ -20,16 +20,16 @@ resource_groups = {
 # List of App Service plans
 app_service_plans = {
   app_service_plan1 = {
-    name         = "cmaz-12345679-mod5-location1-asp"
-    rg_name      = "cmaz-12345679-mod5-location1-rg"
+    name         = "cmaz-12345678-mod5-location1-asp"
+    rg_name      = "cmaz-12345678-mod5-location1-rg"
     os_type      = "Windows"
     sku_name     = "S1"
     worker_count = 2
     description  = "App Service Plan in East US Description"
   },
   app_service_plan2 = {
-    name         = "cmaz-12345679-mod5-location2-asp"
-    rg_name      = "cmaz-12345679-mod5-location2-rg"
+    name         = "cmaz-12345678-mod5-location2-asp"
+    rg_name      = "cmaz-12345678-mod5-location2-rg"
     os_type      = "Windows"
     sku_name     = "S1"
     worker_count = 1
@@ -40,18 +40,18 @@ app_service_plans = {
 # List of App Services
 app_services = {
   app1 = {
-    name                  = "cmaz-12345679-mod5-location1-app"
-    app_service_plan_name = "cmaz-12345679-mod5-location1-asp"
-    rg_name               = "cmaz-12345679-mod5-location1-rg"
+    name                  = "cmaz-12345678-mod5-location1-app"
+    app_service_plan_name = "cmaz-12345678-mod5-location1-asp"
+    rg_name               = "cmaz-12345678-mod5-location1-rg"
     kind                  = "Windows"
     tier                  = "Standard"
     size                  = "S1"
     description           = "App Service in East US Description"
   },
   app2 = {
-    name                  = "cmaz-12345679-mod5-location2-app"
-    app_service_plan_name = "cmaz-12345679-mod5-location2-asp"
-    rg_name               = "cmaz-12345679-mod5-location2-rg"
+    name                  = "cmaz-12345678-mod5-location2-app"
+    app_service_plan_name = "cmaz-12345678-mod5-location2-asp"
+    rg_name               = "cmaz-12345678-mod5-location2-rg"
     kind                  = "Windows"
     tier                  = "Standard"
     size                  = "S1"
@@ -92,8 +92,8 @@ tags = {
 
 # Traffic Manager
 traffic_manager = {
-  profile_name           = "cmaz-12345679-mod5-location3-traf"
-  rg_name                = "cmaz-12345679-mod5-location3-rg"
+  profile_name           = "cmaz-12345678-mod5-location3-traf"
+  rg_name                = "cmaz-12345678-mod5-location3-rg"
   traffic_routing_method = "Performance"
   monitor_port           = 80
   monitor_protocol       = "HTTP"
