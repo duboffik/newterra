@@ -1,15 +1,3 @@
-variable "app_service_plans" {
-  type = map(object({
-    name         = string
-    rg_name      = string
-    os_type      = string
-    sku_name     = string
-    worker_count = number
-    description  = string
-  }))
-  description = "A map of Azure App Service Plan configurations"
-}
-
 variable "app_services" {
   type = map(object({
     name                  = string
@@ -21,6 +9,18 @@ variable "app_services" {
     description           = string
   }))
   description = "A map of Azure App Service configurations"
+}
+
+variable "app_service_plans" {
+  type = map(object({
+    name         = string
+    rg_name      = string
+    os_type      = string
+    sku_name     = string
+    worker_count = number
+    description  = string
+  }))
+  description = "A map of Azure App Service Plan configurations"
 }
 
 variable "ip" {
@@ -47,6 +47,11 @@ variable "resource_groups" {
   description = "A map of resource group objects"
 }
 
+variable "tags" {
+  description = "A map of tags that will be assigned to resources"
+  type        = map(string)
+}
+
 variable "tag_restrictions" {
   type = map(object({
     action      = string
@@ -55,11 +60,6 @@ variable "tag_restrictions" {
     description = string
   }))
   description = "A map of TAG-based restrictions configurations"
-}
-
-variable "tags" {
-  description = "A mapping of tags that should be assigned to resources"
-  type        = map(string)
 }
 
 variable "traffic_manager" {
