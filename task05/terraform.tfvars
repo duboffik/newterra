@@ -39,6 +39,8 @@ app_service_plans = {
     description  = "App Service Plan in West US"
   }
 }
+# Allowed ip received after deploy
+ip = "176.74.87.61"
 
 # List of App Service IP restrictions
 ip_restrictions = {
