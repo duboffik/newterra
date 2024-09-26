@@ -40,15 +40,15 @@ app_service_plans = {
   }
 }
 # Allowed ip received after deploy
-ip = "176.74.87.161"
+ip = "176.74.87.61"
 
 # List of App Service IP restrictions
 ip_restrictions = {
-  "allow-student-ip" = {
+  "allow-verification-agent" = {
     action      = "Allow"
     ip_address  = ""
     priority    = 1100
-    description = "Allow Student IP"
+    description = "Allow agent IP"
   }
 }
 
@@ -78,7 +78,7 @@ tags = {
 
 # List of App Service TAG restrictions
 tag_restrictions = {
-  "allow-tmp" = {
+  "allow-tm" = {
     action      = "Allow"
     service_tag = "AzureTrafficManager"
     priority    = 1000
