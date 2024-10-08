@@ -28,11 +28,6 @@ variable "app_settings" {
   type        = map(string)
 }
 
-variable "ip" {
-  type        = string
-  description = "Allowed IP address."
-}
-
 variable "ip_restrictions" {
   description = "Map of IP restrictions for the App Service"
   type = map(object({

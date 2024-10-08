@@ -36,7 +36,6 @@ module "app_service" {
   site_config      = lookup(each.value, "site_config", null)
   app_settings     = lookup(each.value, "app_settings", null)
   ip_restrictions  = var.ip_restrictions
-  ip               = var.ip
   tag_restrictions = var.tag_restrictions
   depends_on       = [module.app_service_plan]
   tags             = var.tags
