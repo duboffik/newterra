@@ -44,7 +44,7 @@ app_service_plans = {
 ip_restrictions = {
   "allow-verification-agent" = {
     action      = "Allow"
-    ip_address  = "35.150.142.166/32" # Allowed IP address received from deploy
+    ip_address  = "176.74.87.61/32" # Allowed IP address received from deploy
     priority    = 1100
     description = "Allow agent IP"
   }
