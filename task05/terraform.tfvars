@@ -1,18 +1,18 @@
 # List of App Services
 app_services = {
   app1 = {
-    name                  = "cmaz-1234567-mod5-app-01"
-    app_service_plan_name = "cmaz-1234567-mod5-asp-01"
-    rg_name               = "cmaz-1234567-mod5-rg-01"
+    name                  = "cmaz-927242a5-mod5-app-01"
+    app_service_plan_name = "cmaz-927242a5-mod5-asp-01"
+    rg_name               = "cmaz-927242a5-mod5-rg-01"
     kind                  = "Windows"
     tier                  = "Standard"
     size                  = "S1"
     description           = "App Service in East Canada"
   },
   app2 = {
-    name                  = "cmaz-1234567-mod5-app-02"
-    app_service_plan_name = "cmaz-1234567-mod5-asp-02"
-    rg_name               = "cmaz-1234567-mod5-rg-02"
+    name                  = "cmaz-927242a5-mod5-app-02"
+    app_service_plan_name = "cmaz-927242a5-mod5-asp-02"
+    rg_name               = "cmaz-927242a5-mod5-rg-02"
     kind                  = "Windows"
     tier                  = "Standard"
     size                  = "S1"
@@ -23,16 +23,16 @@ app_services = {
 # List of App Service plans
 app_service_plans = {
   app_service_plan1 = {
-    name         = "cmaz-1234567-mod5-asp-01"
-    rg_name      = "cmaz-1234567-mod5-rg-01"
+    name         = "cmaz-927242a5-mod5-asp-01"
+    rg_name      = "cmaz-927242a5-mod5-rg-01"
     os_type      = "Windows"
     sku_name     = "P0v3"
     worker_count = 2
     description  = "App Service Plan in East Canada"
   },
   app_service_plan2 = {
-    name         = "cmaz-1234567-mod5-asp-02"
-    rg_name      = "cmaz-1234567-mod5-rg-02"
+    name         = "cmaz-927242a5-mod5-asp-02"
+    rg_name      = "cmaz-927242a5-mod5-rg-02"
     os_type      = "Windows"
     sku_name     = "P1v3"
     worker_count = 1
@@ -53,17 +53,17 @@ ip_restrictions = {
 # List of Resource groups
 resource_groups = {
   rg_1 = {
-    name        = "cmaz-1234567-mod5-rg-01"
+    name        = "cmaz-927242a5-mod5-rg-01"
     location    = "canadaeast"
     description = "Resource Group in East Canada"
   },
   rg_2 = {
-    name        = "cmaz-1234567-mod5-rg-02"
+    name        = "cmaz-927242a5-mod5-rg-02"
     location    = "westus"
     description = "Resource Group in West US"
   },
   rg_3 = {
-    name        = "cmaz-1234567-mod5-rg-03"
+    name        = "cmaz-927242a5-mod5-rg-03"
     location    = "centralus"
     description = "Resource Group in Central US"
   }
@@ -86,8 +86,8 @@ tag_restrictions = {
 
 # Traffic Manager
 traffic_manager = {
-  profile_name           = "cmaz-1234567-mod5-traf"
-  rg_name                = "cmaz-1234567-mod5-rg-03"
+  profile_name           = "cmaz-927242a5-mod5-traf"
+  rg_name                = "cmaz-927242a5-mod5-rg-03"
   traffic_routing_method = "Performance"
   monitor_port           = 80
   monitor_protocol       = "HTTP"
