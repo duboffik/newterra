@@ -17,7 +17,7 @@ resource_groups = {
 
 # Tags
 tags = {
-  Creator = "name_surname@epam.com"
+  Creator = "dzmitry_dubovik@epam.com"
 }
 
 # Traffic Manager
