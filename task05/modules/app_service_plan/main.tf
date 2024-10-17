@@ -1,5 +1,5 @@
 # Create App Service plan
-resource "azurerm_service_plan" "main" {
+resource "azurerm_service_plan" "this" {
   name                = var.name
   resource_group_name = var.rg_name
   location            = var.location

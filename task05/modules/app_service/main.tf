@@ -1,11 +1,10 @@
 # Create App Service
-resource "azurerm_windows_web_app" "main" {
+resource "azurerm_windows_web_app" "this" {
   name                = var.name
   location            = var.location
   resource_group_name = var.rg_name
   service_plan_id     = var.service_plan_id
   tags                = var.tags
-  app_settings        = var.app_settings
 
   site_config {
 
@@ -18,20 +17,9 @@ resource "azurerm_windows_web_app" "main" {
         name        = ip_restriction.key
         action      = ip_restriction.value.action
         ip_address  = ip_restriction.value.ip_address
-        description = ip_restriction.value.description
-        priority    = ip_restriction.value.priority
-      }
-    }
-
-    # Handle tag restrictions
-    dynamic "ip_restriction" {
-      for_each = var.tag_restrictions
-      content {
-        name        = ip_restriction.key
-        action      = ip_restriction.value.action
         service_tag = ip_restriction.value.service_tag
-        priority    = ip_restriction.value.priority
         description = ip_restriction.value.description
+        priority    = ip_restriction.value.priority
       }
     }
   }
